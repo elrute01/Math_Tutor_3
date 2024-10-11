@@ -1,0 +1,118 @@
+/********************************************************************
+Course Section: 1 - 9:00am
+Programmers: Ellie Ruterbories and Gage Stut
+Program: MathTutor
+Version: 2
+GitHub URL: https://github.com/elrute01/Math-Tutor-2/edit/main/Math2#L3C2
+Description: This math tutor is fun and easy. It gives random questions
+to the user and makes sure the answer is correct. If incorrect, the
+correct answer is given.
+*/
+
+#include <iostream> // for cout and cin
+#include <string>  // for string variable
+#include <cstdlib> // allows for randomizer
+#include <ctime> // allows time function
+
+using namespace std;
+
+int main() { //numbers for the math tutor
+    int userAns;
+    int leftNum;
+    int rightNum;
+    int mathType;
+    int correctAns;
+    int temp;
+    char mathSymbol;
+srand(static_cast<unsigned int>(time(0))); // seed for the random number generator
+
+    string userName;
+    // creating a header for the program and welcoming the user
+    cout << "*********************************************************" << endl;
+    cout << "   __  __       _   _       _____      _   " << endl;
+    cout << "  |  \\/  | __ _| |_| |__   |_   _|   _| |_ ___  _ __" << endl;
+    cout << "  | |\\/| |/ _` | __| '_ \\    | || | | | __/ _ \\| '__|" << endl;
+    cout << "  | |  | | (_| | |_| | | |     | || |_| | || (_) | |" << endl;
+    cout << "  |_|  |_|\\__,_|\\__|_| |_|   |_| \\__,_|\\__\\___/|_|" << endl;
+    cout << "*********************************************************" << endl;
+    cout << "       Welcome to Elise & Gage's Silly Math Tutor!" << endl;
+    cout << "*********************************************************" << endl;
+    cout << endl;
+
+    // making the intro fun with jokes
+    cout << "Fun Math Facts" << endl;
+    cout << "     - To the man who invented zero: Thanks for nothing. " << endl;
+    cout << "     - For every complex mathematical problem, there is a simple";
+    cout << " and elegant solution that is completely wrong." << endl;
+    cout << "     - The only way to do math is to use your brain." << endl;
+    cout << endl;
+
+    // user will need to enter his/her name
+    cout << "Please enter your name: ";
+    cin >> userName;
+    cout << endl;
+
+    // welcome the user to the tutor
+    cout << "Welcome " << userName << "!!" << endl;
+    cout << endl;
+
+    // generate random numbers AND math type
+    leftNum = rand() % 10 + 1;
+    rightNum = rand() % 10 + 1;
+    mathType = rand() % 4 + 1;
+
+    // using a switch statement to determine math symbol and correct answer
+    switch (mathType)  {
+        case 1: // Addition
+            correctAns = leftNum + rightNum;
+            mathSymbol = '+';
+            break;
+        case 2: // Subtraction
+            if (leftNum < rightNum) {
+            temp = leftNum;
+            leftNum = rightNum;
+            rightNum = temp;
+        }
+        case 3: // Multiplication
+            correctAns = leftNum * rightNum;
+            mathSymbol = '*';
+            break;
+        case 4: // division
+            correctAns = leftNum;
+            leftNum *= rightNum;
+            mathSymbol = '/';
+            break;
+        default:
+            std::cerr << "Error: Invalid Math Type (" << mathType << "). Please contact Support." << endl;
+            return -1;
+        }
+
+    // give them a math question to answer
+    cout << "Let's test your skills!" << endl;
+    cout << endl;
+
+    cout << userName << ", " << endl;
+    cout << "What is " << leftNum << " " << mathSymbol << " " << rightNum << " = ?" << endl;
+        cout << "Answer: ";
+        cin >> userAns;
+
+    if (userAns == correctAns) {
+        cout << "Great Job!!" << endl; }
+    else {
+        cout << "Incorrect. The right answer is: " << correctAns << "." << endl; }
+
+    // create an outro for the tutor web
+    cout << endl;
+    cout << "Since this was the best tutor ever, feel free to stick around for the free trial!";
+    cout << endl;
+    cout << endl;
+
+    // make it fun with the end of the program
+    cout << "If you are interested, go to www.mysillymathtutor.com" << endl;
+    cout << endl;
+    cout << " or call 1-800-(SILMATH) for more information." << endl;
+    cout << endl;
+    cout << "Thank you for using my program!" << endl;
+
+return 0; // end of program
+}
