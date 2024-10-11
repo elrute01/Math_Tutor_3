@@ -1,6 +1,6 @@
 /********************************************************************
 Course Section: 1 - 9:00am
-Programmers: Ellie Ruterbories and Gage Stut
+Programmers: Ellie Ruterbories and Jacob Czapla
 Program: MathTutor
 Version: 2
 GitHub URL: https://github.com/elrute01/Math-Tutor-2/edit/main/Math2#L3C2
@@ -35,7 +35,7 @@ srand(static_cast<unsigned int>(time(0))); // seed for the random number generat
     cout << "  | |  | | (_| | |_| | | |     | || |_| | || (_) | |" << endl;
     cout << "  |_|  |_|\\__,_|\\__|_| |_|   |_| \\__,_|\\__\\___/|_|" << endl;
     cout << "*********************************************************" << endl;
-    cout << "       Welcome to Elise & Gage's Silly Math Tutor!" << endl;
+    cout << "       Welcome to Elise & Jacob's Silly Math Tutor!" << endl;
     cout << "*********************************************************" << endl;
     cout << endl;
 
