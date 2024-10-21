@@ -65,7 +65,7 @@
 
                  // Using a switch statement to determine math symbol and correct answer
                  switch (mathType) {
-                     case ADD: 
+                     case ADD: // Addition
                          correctAnswer = leftNum + rightNum;
                          mathSymbol = '+';
                          break;
