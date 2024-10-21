@@ -115,7 +115,7 @@
                  }
 
                  // Asking if the user wants another question
-                 cout << "Do you want another question? (y-yes | n-no)? ";
+                 cout << "Do you want to keep testing your skills with another question? (y-yes | n-no)? ";
                  cin.ignore(); // Clear the input buffer
                  getline(cin, userInput);
                  for (char& c : userInput) {
