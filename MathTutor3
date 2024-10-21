@@ -100,7 +100,7 @@
                  }
 
                  // Give them a math question to answer
-                 cout << "Let's test your skills!" << endl;
+                 cout << "Let's test your math brain!" << endl;
                  cout << endl;
 
                  cout << userName << ", " << endl;
@@ -109,9 +109,9 @@
                  cin >> userAnswer;
 
                  if (userAnswer == correctAnswer) {
-                     cout << "Great Job!!" << endl;
+                     cout << "You're a genius!!" << endl;
                  } else {
-                     cout << "Incorrect. The right answer is: " << correctAnswer << "." << endl;
+                     cout << "I'm sorry that is incorrect. The right answer is: " << correctAnswer << "." << endl;
                  }
 
                  // Asking if the user wants another question
