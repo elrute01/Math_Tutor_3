@@ -70,7 +70,7 @@
                          mathSymbol = '+';
                          break;
 
-                     case SUB:
+                     case SUB: // Subtraction
                          if (leftNum < rightNum) {
                              temp = leftNum;
                              leftNum = rightNum;
