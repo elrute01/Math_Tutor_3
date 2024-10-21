@@ -124,7 +124,7 @@
 
                  while (userInput != "Y" && userInput != "YES" && userInput != "N" && userInput != "NO") {
                      cout << "Invalid input, please try again..." << endl;
-                     cout << "Do you want another question? (y-yes | n-no)? ";
+                     cout << "Do you want to keep testing your skills with another question? (y-yes | n-no)? ";
                      getline(cin, userInput);
                      for (char& c : userInput) {
                          c = toupper(c); // Convert input to uppercase
