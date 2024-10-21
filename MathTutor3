@@ -60,8 +60,8 @@
              do {
                  // Generate random numbers and math type
                  leftNum = rand() % 10 + 1;  // Random number between 1 and 10
-                 rightNum = rand() % 10 + 1; 
-                 mathType = static_cast<MathType>(rand() % 4 + 1);  // Random math type between 1 and 4
+                 rightNum = rand() % 10 + 1; // Random number between 1 and 10
+                 mathType = static_cast<MathType>(rand() % 4 + 1);  
 
                  // Using a switch statement to determine math symbol and correct answer
                  switch (mathType) {
