@@ -85,7 +85,7 @@
                          mathSymbol = '*';
                          break;
 
-                     case DIV: 
+                     case DIV: // Division
                          // Prevent division by zero
                          while (rightNum == 0) {
                              rightNum = rand() % 10 + 1;
