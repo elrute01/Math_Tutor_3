@@ -1,118 +1,149 @@
-/********************************************************************
-Course Section: 1 - 9:00am
-Programmers: Ellie Ruterbories and Jacob Czapla
-Program: MathTutor
-Version: 2
-GitHub URL: https://github.com/elrute01/Math-Tutor-2/edit/main/Math2#L3C2
-Description: This math tutor is fun and easy. It gives random questions
-to the user and makes sure the answer is correct. If incorrect, the
-correct answer is given.
-*/
+         #include <iostream> // for cout and cin
+         #include <string>   // for string variable
+         #include <cstdlib>  // allows for randomizer
+         #include <ctime>    // allows time function
+         #include <cctype>   // for toupper
 
-#include <iostream> // for cout and cin
-#include <string>  // for string variable
-#include <cstdlib> // allows for randomizer
-#include <ctime> // allows time function
+         using namespace std;
 
-using namespace std;
+         // Define enum
+         enum MathType {
+             ADD = 1,
+             SUB,
+             MULT,
+             DIV
+         };
 
-int main() { //numbers for the math tutor
-    int userAns;
-    int leftNum;
-    int rightNum;
-    int mathType;
-    int correctAns;
-    int temp;
-    char mathSymbol;
-srand(static_cast<unsigned int>(time(0))); // seed for the random number generator
+         int main() {
+             // Declaring variables
+             string userName; // Stores the user's full name
+             int leftNum = 0;
+             int rightNum = 0;
+             MathType mathType; // Using enum instead of int
+             char mathSymbol = ' ';
+             int correctAnswer = 0;
+             int userAnswer = 0;
+             int temp = 0;
+             string userInput;
 
-    string userName;
-    // creating a header for the program and welcoming the user
-    cout << "*********************************************************" << endl;
-    cout << "   __  __       _   _       _____      _   " << endl;
-    cout << "  |  \\/  | __ _| |_| |__   |_   _|   _| |_ ___  _ __" << endl;
-    cout << "  | |\\/| |/ _` | __| '_ \\    | || | | | __/ _ \\| '__|" << endl;
-    cout << "  | |  | | (_| | |_| | | |     | || |_| | || (_) | |" << endl;
-    cout << "  |_|  |_|\\__,_|\\__|_| |_|   |_| \\__,_|\\__\\___/|_|" << endl;
-    cout << "*********************************************************" << endl;
-    cout << "       Welcome to Elise & Jacob's Silly Math Tutor!" << endl;
-    cout << "*********************************************************" << endl;
-    cout << endl;
+             // Seed the random number generator for randomness
+             srand(static_cast<unsigned int>(time(0)));
 
-    // making the intro fun with jokes
-    cout << "Fun Math Facts" << endl;
-    cout << "     - To the man who invented zero: Thanks for nothing. " << endl;
-    cout << "     - For every complex mathematical problem, there is a simple";
-    cout << " and elegant solution that is completely wrong." << endl;
-    cout << "     - The only way to do math is to use your brain." << endl;
-    cout << endl;
+             // Creating a header for the program and welcoming the user
+             cout << "*********************************************************" << endl;
+             cout << "   __  __       _   _       _____      _   " << endl;
+             cout << "  |  \\/  | __ _| |_| |__   |_   _|   _| |_ ___  _ __" << endl;
+             cout << "  | |\\/| |/ _` | __| '_ \\    | || | | | __/ _ \\| '__|" << endl;
+             cout << "  | |  | | (_| | |_| | | |     | || |_| | || (_) | |" << endl;
+             cout << "  |_|  |_|\\__,_|\\__|_| |_|   |_| \\__,_|\\__\\___/|_|" << endl;
+             cout << "*********************************************************" << endl;
+             cout << "       Welcome to Elise & Jacob's Silly Math Tutor!" << endl;
+             cout << "*********************************************************" << endl;
+             cout << endl;
 
-    // user will need to enter his/her name
-    cout << "Please enter your name: ";
-    cin >> userName;
-    cout << endl;
+             // Making the intro fun with jokes
+             cout << "Fun Math Facts" << endl;
+             cout << "     - To the man who invented zero: Thanks for nothing. " << endl;
+             cout << "     - For every complex mathematical problem, there is a simple";
+             cout << " and elegant solution that is completely wrong." << endl;
+             cout << "     - The only way to do math is to use your brain." << endl;
+             cout << endl;
 
-    // welcome the user to the tutor
-    cout << "Welcome " << userName << "!!" << endl;
-    cout << endl;
+             // User will need to enter their name
+             cout << "Please enter your name: ";
+             getline(cin, userName);
 
-    // generate random numbers AND math type
-    leftNum = rand() % 10 + 1;
-    rightNum = rand() % 10 + 1;
-    mathType = rand() % 4 + 1;
+             // Welcome the user to the tutor
+             cout << "Welcome " << userName << "!!" << endl;
+             cout << endl;
 
-    // using a switch statement to determine math symbol and correct answer
-    switch (mathType)  {
-        case 1: // Addition
-            correctAns = leftNum + rightNum;
-            mathSymbol = '+';
-            break;
-        case 2: // Subtraction
-            if (leftNum < rightNum) {
-            temp = leftNum;
-            leftNum = rightNum;
-            rightNum = temp;
-        }
-        case 3: // Multiplication
-            correctAns = leftNum * rightNum;
-            mathSymbol = '*';
-            break;
-        case 4: // division
-            correctAns = leftNum;
-            leftNum *= rightNum;
-            mathSymbol = '/';
-            break;
-        default:
-            std::cerr << "Error: Invalid Math Type (" << mathType << "). Please contact Support." << endl;
-            return -1;
-        }
+             do {
+                 // Generate random numbers and math type
+                 leftNum = rand() % 10 + 1;  // Random number between 1 and 10
+                 rightNum = rand() % 10 + 1; // Random number between 1 and 10
+                 mathType = static_cast<MathType>(rand() % 4 + 1);  // Random math type between 1 and 4
 
-    // give them a math question to answer
-    cout << "Let's test your skills!" << endl;
-    cout << endl;
+                 // Using a switch statement to determine math symbol and correct answer
+                 switch (mathType) {
+                     case ADD: // Addition
+                         correctAnswer = leftNum + rightNum;
+                         mathSymbol = '+';
+                         break;
 
-    cout << userName << ", " << endl;
-    cout << "What is " << leftNum << " " << mathSymbol << " " << rightNum << " = ?" << endl;
-        cout << "Answer: ";
-        cin >> userAns;
+                     case SUB: // Subtraction
+                         if (leftNum < rightNum) {
+                             temp = leftNum;
+                             leftNum = rightNum;
+                             rightNum = temp;
+                         }
+                         correctAnswer = leftNum - rightNum;
+                         mathSymbol = '-';
+                         break;
 
-    if (userAns == correctAns) {
-        cout << "Great Job!!" << endl; }
-    else {
-        cout << "Incorrect. The right answer is: " << correctAns << "." << endl; }
+                     case MULT: // Multiplication
+                         correctAnswer = leftNum * rightNum;
+                         mathSymbol = '*';
+                         break;
 
-    // create an outro for the tutor web
-    cout << endl;
-    cout << "Since this was the best tutor ever, feel free to stick around for the free trial!";
-    cout << endl;
-    cout << endl;
+                     case DIV: // Division
+                         // Prevent division by zero
+                         while (rightNum == 0) {
+                             rightNum = rand() % 10 + 1;
+                         }
+                         correctAnswer = leftNum / rightNum;
+                         mathSymbol = '/';
+                         break;
 
-    // make it fun with the end of the program
-    cout << "If you are interested, go to www.mysillymathtutor.com" << endl;
-    cout << endl;
-    cout << " or call 1-800-(SILMATH) for more information." << endl;
-    cout << endl;
-    cout << "Thank you for using my program!" << endl;
+                     default:
+                         cerr << "Error: Invalid Math Type (" << mathType << "). Please contact Support." << endl;
+                         return -1;
+                 }
 
-return 0; // end of program
-}
+                 // Give them a math question to answer
+                 cout << "Let's test your skills!" << endl;
+                 cout << endl;
+
+                 cout << userName << ", " << endl;
+                 cout << "What is " << leftNum << " " << mathSymbol << " " << rightNum << " = ?" << endl;
+                 cout << "Answer: ";
+                 cin >> userAnswer;
+
+                 if (userAnswer == correctAnswer) {
+                     cout << "Great Job!!" << endl;
+                 } else {
+                     cout << "Incorrect. The right answer is: " << correctAnswer << "." << endl;
+                 }
+
+                 // Asking if the user wants another question
+                 cout << "Do you want another question? (y-yes | n-no)? ";
+                 cin.ignore(); // Clear the input buffer
+                 getline(cin, userInput);
+                 for (char& c : userInput) {
+                     c = toupper(c); // Convert input to uppercase
+                 }
+
+                 while (userInput != "Y" && userInput != "YES" && userInput != "N" && userInput != "NO") {
+                     cout << "Invalid input, please try again..." << endl;
+                     cout << "Do you want another question? (y-yes | n-no)? ";
+                     getline(cin, userInput);
+                     for (char& c : userInput) {
+                         c = toupper(c); // Convert input to uppercase
+                     }
+                 }
+
+             } while (userInput == "Y" || userInput == "YES");
+
+             // Create an outro for the tutor
+             cout << endl;
+             cout << "Since this was the best tutor ever, feel free to stick around for the free trial!" << endl;
+             cout << endl;
+
+             // Make it fun with the end of the program
+             cout << "If you are interested, go to www.mysillymathtutor.com" << endl;
+             cout << endl;
+             cout << " or call 1-800-(SILMATH) for more information." << endl;
+             cout << endl;
+             cout << "Thank you for using my program!" << endl;
+
+             return 0; // End of program
+         }
