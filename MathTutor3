@@ -1,3 +1,17 @@
+/********************************************************************
+Course Section: 1 - 9:00am
+Programmers: Ellie Ruterbories
+Program: MathTutor 
+Version: 3
+GitHub URL: https://github.com/elrute01/Math_Tutor_3/edit/main/MathTutor3#L1C8
+Description: This math tutor is fun and easy. It gives random questions 
+to the user and makes sure the answer is correct. If incorrect, the 
+correct answer is given. It also gives the option to continue with another question
+of not.
+/*********************************************************************
+
+
+
          #include <iostream> // for cout and cin
          #include <string>   // for string variable
          #include <cstdlib>  // allows for randomizer
