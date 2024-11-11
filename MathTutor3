@@ -1,3 +1,14 @@
+/*
+Section 1 - 9:00 am
+Version: 3
+Programmer: Elise Ruterbories
+URL: https://github.com/elrute01/Math_Tutor_3/edit/main/MathTutor3#L1C0
+Description: This math tutor is fun and easy. It gives random questions 
+to the user and makes sure the answer is correct. If incorrect, the 
+correct answer is given and the option to have another question is given.
+There are levels and every 3 questions answered correctly the level goes up.
+*/
+
 #include <iostream>
 #include <string>
 #include <cstdlib>
