@@ -109,24 +109,38 @@ int main() {
 
         // Ask the math question
         cout << "What is " << leftNum << " " << mathSymbol << " " << rightNum << " = ? ";
+        int attemptsLeft = 3;  // Max 3 attempts
+        bool correct = false;
+
+    while (attemptsLeft > 0) {       
         while (!(cin >> userAnswer)) {
             cin.clear();
-            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            cin.ignore(numeric_limits<streamsize>::max();
             cout << "Invalid input. Please enter a number: ";
         }
-
         if (userAnswer == correctAnswer) {
             cout << "You're a genius!!" << endl;
+            correct = true;
             correctCount++;  // Increment correct answer count
-        } else {
-            cout << "Sorry, that's incorrect. The correct answer is: " << correctAnswer << endl;
+            break;
+        } 
+        else {
+            attemptsLeft--;
+                if (attemptsLeft > 0) {
+                    cout << "Sorry, that answer is incorrect. The correct answer is: " << correctAnswer << "You have " << attemptsLeft << " attempts left" << endl;
         }
+    }
 
         // Check if the user has answered 3 questions correctly, then level up
         if (correctCount >= 3) {
             level++;  // Level up!
             correctCount = 0;  // Reset the correct answer count
             cout << "Congratulations! You've leveled up to Level " << level << "!" << endl;
+        }
+         if (incorrectAttempts >= 3) {
+            level--;  // Level down!
+            incorrectAttempts = 0;  // Reset incorrect attempts
+            cout << "Oops! You've been answering incorrectly. You've leveled down to Level " << level << "!" << endl;
         }
 
         // Ask if the user wants another question
