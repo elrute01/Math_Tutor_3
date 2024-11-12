@@ -73,7 +73,7 @@ int main() {
     // Main game loop
     do {
         // Display the current level
-        cout << "\n***** Level " << level << " *****" << endl;
+        cout << "[Level] " << level << endl;
 
         // Get random numbers based on the current level
         leftNum = getRandomNumber(level);  // Get a random number based on the level
