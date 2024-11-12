@@ -1,14 +1,3 @@
-/*
-Section 1 - 9:00 am
-Version: 3
-Programmer: Elise Ruterbories
-URL: https://github.com/elrute01/Math_Tutor_3/edit/main/MathTutor3#L1C0
-Description: This math tutor is fun and easy. It gives random questions 
-to the user and makes sure the answer is correct. If incorrect, the 
-correct answer is given and the option to have another question is given.
-There are levels and every 3 questions answered correctly the level goes up.
-*/
-
 #include <iostream>
 #include <string>
 #include <cstdlib>
@@ -60,6 +49,7 @@ int main() {
     string userInput;
     int correctCount = 0;  // To track number of correct answers
     int level = 1;         // Start at level 1
+    int incorrectAttempts = 0;  // To track incorrect attempts
 
     srand(static_cast<unsigned int>(time(0)));
 
@@ -73,7 +63,7 @@ int main() {
     // Main game loop
     do {
         // Display the current level
-        cout << "[Level " << level << "]"<< endl;
+        cout << "[Level " << level << "]" << endl;
 
         // Get random numbers based on the current level
         leftNum = getRandomNumber(level);  // Get a random number based on the level
@@ -112,24 +102,30 @@ int main() {
         int attemptsLeft = 3;  // Max 3 attempts
         bool correct = false;
 
-    while (attemptsLeft > 0) {       
-        while (!(cin >> userAnswer)) {
-            cin.clear();
-            cin.ignore(numeric_limits<streamsize>::max();
-            cout << "Invalid input. Please enter a number: ";
-        }
-        if (userAnswer == correctAnswer) {
-            cout << "You're a genius!!" << endl;
-            correct = true;
-            correctCount++;  // Increment correct answer count
-            break;
-        } 
-        else {
-            attemptsLeft--;
+        while (attemptsLeft > 0) {       
+            while (!(cin >> userAnswer)) {
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                cout << "Invalid input. Please enter a number: ";
+            }
+
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');  // Add this line to clear the newline character
+
+            if (userAnswer == correctAnswer) {
+                cout << "You're a genius!!" << endl;
+                correct = true;
+                correctCount++;  // Increment correct answer count
+                break;
+            } else {
+                attemptsLeft--;
                 if (attemptsLeft > 0) {
-                    cout << "Sorry, that answer is incorrect. The correct answer is: " << correctAnswer << "You have " << attemptsLeft << " attempts left" << endl;
+                    cout << "Sorry, that's incorrect. You have " << attemptsLeft << " attempts left. Try again: ";
+                } else {
+                    cout << "Sorry, that's incorrect. The correct answer is: " << correctAnswer << endl;
+                    incorrectAttempts++;  // Increment incorrect attempts
+                }
+            }
         }
-    }
 
         // Check if the user has answered 3 questions correctly, then level up
         if (correctCount >= 3) {
@@ -137,12 +133,14 @@ int main() {
             correctCount = 0;  // Reset the correct answer count
             cout << "Congratulations! You've leveled up to Level " << level << "!" << endl;
         }
-         if (incorrectAttempts >= 3) {
+        // Check if the user has been incorrect 3 times, then level down
+        if (incorrectAttempts >= 3) {
             level--;  // Level down!
             incorrectAttempts = 0;  // Reset incorrect attempts
             cout << "Oops! You've been answering incorrectly. You've leveled down to Level " << level << "!" << endl;
         }
 
+        // Ask if the user wants another question
         bool validInput = false;
         while (!validInput) {
             cout << "Do you want to keep testing your skills? (y-yes | n-no): ";
