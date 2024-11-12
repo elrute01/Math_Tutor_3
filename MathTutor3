@@ -143,11 +143,22 @@ int main() {
             cout << "Oops! You've been answering incorrectly. You've leveled down to Level " << level << "!" << endl;
         }
 
-        // Ask if the user wants another question
-        cout << "Do you want to keep testing your skills? (y-yes | n-no): ";
-        cin.ignore();  // Clear the input buffer before getting the next line
-        getline(cin, userInput);
-        for (char& c : userInput) c = toupper(c);
+        bool validInput = false;
+        while (!validInput) {
+            cout << "Do you want to keep testing your skills? (y-yes | n-no): ";
+            getline(cin, userInput);
+
+            // Convert user input to uppercase for consistency
+            for (char& c : userInput) c = toupper(c);
+
+            if (userInput == "Y" || userInput == "YES") {
+                validInput = true;
+            } else if (userInput == "N" || userInput == "NO") {
+                validInput = true;
+            } else {
+                cout << "Invalid input. Please enter 'y' for yes or 'n' for no." << endl;
+            }
+        }
 
     } while (userInput == "Y" || userInput == "YES");
 
